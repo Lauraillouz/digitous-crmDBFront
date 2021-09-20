@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 // Context
 import { UserContext } from "../App";
+// URL
+import { API_URL } from "../App";
 
 const passwordSchema = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
 
@@ -21,7 +23,7 @@ const Register = () => {
     const isPassWordValid = passwordSchema.test(password);
 
     if (isPassWordValid) {
-      fetch("https://blooming-retreat-37691.herokuapp.com/register", {
+      fetch(`${API_URL}/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -33,6 +35,8 @@ const Register = () => {
         .then((res) => {
           console.log(res);
         });
+    } else {
+      alert("Password invalid");
     }
   };
 

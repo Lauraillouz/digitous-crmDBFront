@@ -9,6 +9,9 @@ import Login from "./views/Login";
 import Home from "./views/Home";
 // Context
 export const UserContext = createContext();
+// URL
+export const API_URL = "https://blooming-retreat-37691.herokuapp.com";
+/* export const API_URL = "http://localhost:3000"; */
 
 const App = () => {
   const [email, setEmail] = useState("");
@@ -21,7 +24,7 @@ const App = () => {
         <UserContext.Provider
           value={{ email, setEmail, password, setPassword }}
         >
-          <Route exact path="/register" component={Register} />
+          <Route exact path="/" component={Register} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/contacts" component={Home} />
         </UserContext.Provider>
