@@ -52,23 +52,23 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <h2>Welcome in crmDB!</h2>
-      <p>
+    <div className="regularPadding">
+      <h2 className="mb3">Welcome in crmDB!</h2>
+      <p className="mb1">
         If you already have an account, please{" "}
         <Link to="/login">login here</Link>
       </p>
-      <p>Or create your account:</p>
-      <form>
+      <p className="mb1">Or create your account:</p>
+      <form className="mt2 flex justifyBetween">
         <div>
-          <label>Email</label>
+          <label className="me1">Email: </label>
           <input type="email" onChange={handleEmail} />
         </div>
         <div>
-          <label>Password</label>
+          <label className="me1">Password: </label>
           <input type="password" onChange={handlePassword} />
         </div>
-        <button type="submit" onClick={handleSubmit}>
+        <button className="mt1" type="submit" onClick={handleSubmit}>
           Submit
         </button>
       </form>

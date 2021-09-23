@@ -77,7 +77,7 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className="regularPadding">
       {canLogin ? (
         <div>
           {contacts ? (

@@ -58,29 +58,29 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="regularPadding">
       {isNewUser ? (
-        <p>
+        <p className="mb1">
           Congratulations! Your account has been successfully created. Now,
           please login:
         </p>
       ) : (
         <div>
-          <p>
-            If you don't have an account, yet, please{" "}
+          <p className="mb1">
+            If you don't have an account yet, please{" "}
             <Link to="/">create one here</Link>
           </p>
-          <p>Or login here:</p>
+          <p className="mb1">Or login here:</p>
         </div>
       )}
 
-      <form>
+      <form className="mt2 flex justifyBetween">
         <div>
-          <label>Email</label>
+          <label className="me1">Email: </label>
           <input type="email" onChange={handleEmail} />
         </div>
         <div>
-          <label>Password</label>
+          <label className="me1">Password: </label>
           <input type="password" onChange={handlePassword} />
         </div>
         <button type="submit" onClick={handleSubmit}>

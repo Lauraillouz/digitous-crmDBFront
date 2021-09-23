@@ -3,15 +3,21 @@ import { Link } from "react-router-dom";
 const NavBar = () => {
   return (
     <nav>
-      <ul>
+      <ul className="flex flexRow justifyAround">
         <li>
-          <Link to="/">New account</Link>
+          <Link to="/" className="link">
+            New account
+          </Link>
         </li>
         <li>
-          <Link to="/login">Login</Link>
+          <Link to="/login" className="link">
+            Login
+          </Link>
         </li>
         <li>
-          <Link to="/contacts">Home</Link>
+          <Link to="/contacts" className="link">
+            Home
+          </Link>
         </li>
       </ul>
     </nav>
