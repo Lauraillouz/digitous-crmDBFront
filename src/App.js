@@ -9,20 +9,28 @@ import Login from "./views/Login";
 import Home from "./views/Home";
 // Context
 export const UserContext = createContext();
-// URL
-export const API_URL = "https://blooming-retreat-37691.herokuapp.com";
-/* export const API_URL = "http://localhost:3000"; */
 
 const App = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isNewUser, setIsNewUser] = useState(false);
+  const [canLogin, setCanLogin] = useState(false);
 
   return (
     <BrowserRouter>
       <NavBar />
       <Switch>
         <UserContext.Provider
-          value={{ email, setEmail, password, setPassword }}
+          value={{
+            email,
+            setEmail,
+            password,
+            setPassword,
+            isNewUser,
+            setIsNewUser,
+            canLogin,
+            setCanLogin,
+          }}
         >
           <Route exact path="/" component={Register} />
           <Route exact path="/login" component={Login} />
