@@ -68,7 +68,11 @@ const Register = () => {
           <label className="me1">Password: </label>
           <input type="password" onChange={handlePassword} />
         </div>
-        <button className="mt1" type="submit" onClick={handleSubmit}>
+        <button
+          className="mt1 submitButton"
+          type="submit"
+          onClick={handleSubmit}
+        >
           Submit
         </button>
       </form>

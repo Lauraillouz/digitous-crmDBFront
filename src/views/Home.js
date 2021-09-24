@@ -3,16 +3,18 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react/cjs/react.development";
 // Context
 import { UserContext } from "../App";
+// Component
+import NewContact from "./NewContact";
+import UpdateContact from "./UpdateContact";
 // URL
 import { API_URL, API_URL_DEV } from "../config";
 
 const Home = () => {
   const { canLogin } = useContext(UserContext);
   const [contacts, setContacts] = useState([]);
-  const [newContactName, setNewContactName] = useState("");
-  const [newContactEmail, setNewContactEmail] = useState("");
-  const [newContactDescription, setNewContactDescription] = useState("");
-  const [newContactCategory, setNewContactCategory] = useState("");
+  const [isNewClicked, setIsNewClicked] = useState(false);
+  const [isUpdateClicked, setisUpdateClicked] = useState(false);
+  const [isDeleteClicked, setisDeleteClicked] = useState(false);
 
   const getContacts = () => {
     let URL;
@@ -41,43 +43,74 @@ const Home = () => {
     getContacts();
   }, [contacts]);
 
-  const handleContactName = (e) => {
-    setNewContactName(e.target.value);
+  const handleNewContact = () => {
+    setIsNewClicked(true);
+    setisUpdateClicked(false);
+    setisDeleteClicked(false);
   };
 
-  const handleContactEmail = (e) => {
-    setNewContactEmail(e.target.value);
+  const handleUpdateContact = () => {
+    setisUpdateClicked(true);
+    setIsNewClicked(false);
+    setisDeleteClicked(false);
   };
 
-  const handleContactDescription = (e) => {
-    setNewContactDescription(e.target.value);
-  };
-
-  const handleContactCategory = (e) => {
-    setNewContactCategory(e.target.value);
-  };
-
-  const handleClick = (e) => {
-    e.preventDefault();
-
-    fetch(`${URL}/contacts`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: newContactName,
-        email: newContactEmail,
-        description: newContactDescription,
-        category: parseInt(newContactCategory),
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res);
-      });
+  const handleDeleteContact = () => {
+    setisDeleteClicked(true);
+    setIsNewClicked(false);
+    setisUpdateClicked(false);
   };
 
   return (
     <div className="regularPadding">
+      <div className="mb3">
+        <button
+          style={
+            isNewClicked
+              ? {
+                  backgroundColor: "rgba(110, 123, 251, 1)",
+                  color: "white",
+                }
+              : { backgroundColor: "white" }
+          }
+          className="tab"
+          onClick={handleNewContact}
+        >
+          New Contact
+        </button>
+        <button
+          style={
+            isUpdateClicked
+              ? {
+                  backgroundColor: "rgba(110, 123, 251, 1)",
+                  color: "white",
+                }
+              : { backgroundColor: "white" }
+          }
+          className="tab"
+          onClick={handleUpdateContact}
+        >
+          Update Contact
+        </button>
+        <button
+          style={
+            isDeleteClicked
+              ? {
+                  backgroundColor: "rgba(110, 123, 251, 1)",
+                  color: "white",
+                }
+              : { backgroundColor: "white" }
+          }
+          className="tab"
+          onClick={handleDeleteContact}
+        >
+          Delete Contact
+        </button>
+      </div>
+      <div>{isNewClicked && <NewContact />}</div>
+      <div>{isUpdateClicked && <UpdateContact />}</div>
+      {/* <div>{isDeleteClicked && <DeleteContact />}</div> */}
+
       {canLogin ? (
         <div>
           {contacts ? (
@@ -91,39 +124,7 @@ const Home = () => {
               );
             })
           ) : (
-            <div>
-              <p>No contacts yet</p>
-              <h3>Add new contact</h3>
-              <form>
-                <div>
-                  <label>Name</label>
-                  <input type="text" required onChange={handleContactName} />
-                </div>
-                <div>
-                  <label>Email</label>
-                  <input type="email" required onChange={handleContactEmail} />
-                </div>
-                <div>
-                  <label>Description</label>
-                  <input
-                    type="description"
-                    required
-                    onChange={handleContactDescription}
-                  />
-                </div>
-                <div>
-                  <label>Category</label>
-                  <input
-                    type="text"
-                    required
-                    onChange={handleContactCategory}
-                  />
-                </div>
-                <button type="submit" onClick={handleClick}>
-                  Save contact
-                </button>
-              </form>
-            </div>
+            <p className="mb3">No contacts yet</p>
           )}
         </div>
       ) : (

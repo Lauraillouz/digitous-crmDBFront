@@ -66,7 +66,7 @@ const Login = () => {
         </p>
       ) : (
         <div>
-          <p className="mb1">
+          <p className="mb3">
             If you don't have an account yet, please{" "}
             <Link to="/">create one here</Link>
           </p>
@@ -83,7 +83,7 @@ const Login = () => {
           <label className="me1">Password: </label>
           <input type="password" onChange={handlePassword} />
         </div>
-        <button type="submit" onClick={handleSubmit}>
+        <button className="submitButton" type="submit" onClick={handleSubmit}>
           Submit
         </button>
       </form>

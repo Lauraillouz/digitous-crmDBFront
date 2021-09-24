@@ -7,11 +7,11 @@
 }
 body {
   background-image: linear-gradient(
-    120deg,
+    130deg,
     rgba(156, 252, 248, 1) 10%,
     rgba(110, 123, 251, 1) 90%
   );
-  margin-bottom: 500px;
+  margin-bottom: 800px;
 }
 
 /* GENERAL */
@@ -23,6 +23,9 @@ body {
 }
 .flexRow {
   flex-direction: row;
+}
+.flexColumn {
+  flex-direction: column;
 }
 .justifyAround {
   justify-content: space-around;
@@ -89,7 +92,7 @@ input {
   padding: 5px;
   margin-right: 10px;
 }
-button {
+.submitButton {
   border: 0;
   border-radius: 5px;
   padding: 5px 10px 5px 10px;
@@ -98,7 +101,29 @@ button {
   height: 25px;
   align-self: flex-end;
 }
-button:hover {
+.submitButton:hover {
   background-color: rgba(110, 123, 251, 1);
   color: white;
+}
+
+/* HOME PAGE */
+.tab {
+  border: 0;
+  border-radius: 5px;
+  padding: 20px;
+}
+.widthName {
+  width: 320px;
+}
+.widthEmail {
+  width: 325px;
+}
+.widthDescription {
+  width: 290px;
+}
+.widthCategory {
+  width: 300px;
+}
+.homeButton {
+  width: 50%;
 }
